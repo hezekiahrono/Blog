@@ -1,0 +1,77 @@
+import { Component, OnInit } from '@angular/core';
+import { Post } from '../post';
+import { PostService } from '../post.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-view',
+  standalone: true,
+  imports: [ CommonModule],
+  templateUrl: './view.component.html',
+  styleUrl: './view.component.css'
+})
+export class ViewComponent implements OnInit {
+  record: any;
+
+  id!: number;
+
+  post!: Post;
+
+      
+
+  /*------------------------------------------
+
+  --------------------------------------------
+
+  Created constructor
+
+  --------------------------------------------
+
+  --------------------------------------------*/
+
+  constructor(
+
+    public postService: PostService,
+
+    private route: ActivatedRoute,
+
+    private router: Router
+
+   ) { }
+
+      
+
+  /**
+
+   * Write code on Method
+
+   *
+
+   * @return response()
+
+   */
+
+  ngOnInit(): void {
+
+     this.route.paramMap.subscribe(params => {
+          const id = Number(params.get('id'));
+          if (id) {
+            this.postService.getRecord(id).subscribe(data => {
+              this.record = data;
+            });
+          }
+        });
+
+    // this.id = this.route.snapshot.params['postId'];
+
+          
+
+    // this.postService.find(this.id).subscribe((data: Post)=>{
+
+    //   this.post = data;
+
+    // });
+
+  }
+}

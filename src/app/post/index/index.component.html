@@ -1,0 +1,57 @@
+
+<div class="p-10">
+   
+
+    <a href="#" routerLink="/image/upload/" class="ml-10 font-bold">Create New Post</a>
+
+      
+
+     <table class="min-w-full bg-white shadow-md rounded-lg p-15">
+
+        <thead>
+
+              <tr>
+
+              
+
+                <th class="py-3 px-4 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Title</th>
+
+                <th class="py-3 px-4 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Body</th>
+                <th class="py-3 px-4 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Slug</th>
+                <th class="py-3 px-4 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Date</th>
+                 <!-- <th class="py-3 px-4 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Image</th> -->
+
+
+                <th class="py-3 px-4 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Action</th>
+
+              </tr>
+
+        </thead>
+
+        <tbody>
+
+              <tr *ngFor="let post of posts">
+
+
+                <td class="py-3 px-4 border-b border-gray-200">{{ post.title }}</td>
+
+                <td class="py-3 px-4 border-b border-gray-200 w-100">{{ post.body }}</td>
+                 <td class="py-3 px-4 border-b border-gray-200">{{ post.slug }}</td>
+                 <td class="py-3 px-4 border-b border-gray-200">{{ post.date }}</td>
+                 <!-- <img class="py-3 px-4 border-b border-gray-200" [src]="'data:image/png;base64,'+post.displayPicture" alt="Nothing"> -->
+                <td class="flex">
+
+                  <a href="#" [routerLink]="['/post/', post.id, 'view']" class="mr-4 font-medium text-blue-600 dark:text-blue-500 hover:underline" >View</a>
+
+                  <a href="#" [routerLink]="['/post/', post.id, 'edit']" class="mr-4 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+
+                  <button type="button" (click)="deleteEntity(post.id)" class="mr-4 font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+
+                </td>
+
+              </tr>
+
+        </tbody>
+
+    </table>
+</div>

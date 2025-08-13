@@ -1,0 +1,55 @@
+
+
+<div class="p-15">
+
+
+
+   <div class="pb-6">
+    <h1 class="text-4xl">The Accessibility Blog</h1>
+     <h6>The Voice of the excluded</h6>
+     </div>
+
+     
+
+
+
+<div class="grid grid-cols-3 gap-20" >
+   
+        <!-- Card 1 -->
+        <div *ngFor="let post of posts" class="bg-gray-300">
+            <!-- <p class="font-medium">{{ myDate | date:'mediumDate'}}<small> 5 min read</small></p> -->
+
+              <td>   <img [src]="'data:image/png;base64,'+post.displayPicture" alt="Not found"></td>
+              <!-- <p><img src="{{post.image}}"></p> -->
+               <p class="font-medium">{{ post.date}}<small> 5 min read</small></p> 
+           <p class="font-bold">{{ post.title}}</p>
+              <p>{{ post.body}}</p>
+               <a href="#" [routerLink]="['/records/', post.id]" class="text-blue-600">View</a>
+        </div>
+        <!-- Card 2 -->
+        <!-- <div>Second Blog
+
+        </div> -->
+        <!-- Card 3 -->
+        <!-- <div>Third Blog
+
+        </div> -->
+        <!-- And so on for other cards -->
+         
+         
+    </div>
+    <div class="flex justify-center">
+    <mat-paginator
+          [length]="totalElements"
+          [pageSize]="pageSize"
+          [pageIndex]="pageNumber"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          (page)="onPageChange($event)">
+        </mat-paginator>
+        </div>
+    </div>
+
+   
+    
+    
+    

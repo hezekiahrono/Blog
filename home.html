@@ -1,0 +1,58 @@
+
+
+<div class="p-15">
+
+
+
+   <div class="pb-6">
+    <h1 class="text-4xl">The Accessibility Blog</h1>
+     <h6>The Voice of the excluded</h6>
+     </div>
+
+
+<div class="grid grid-cols-3 gap-20" >
+    <form>
+    <input type="text" [(ngModel)]="searchTerm"  placeholder="text"
+    class="border-2 border-solid" name="title">
+    
+  <button (click)="searchBlogs()" class="hover:text-blue-500">Search</button>
+  <div *ngIf="searchResults.length > 0">
+      <h2>Search Results:</h2>
+      <ul>
+        <li *ngFor="let result of searchResults">{{ result.title }}</li>
+        <!-- Adjust 'result.name' to match your API response structure -->
+      </ul>
+    </div>
+    <div *ngIf="searchResults.length === 0 && searchTerm">
+      <p>No results found for "{{ searchTerm }}".</p>
+    </div>
+  </form>
+        <!-- Card 1 -->
+        <div *ngFor="let post of posts">
+            <!-- <p class="font-medium">{{ myDate | date:'mediumDate'}}<small> 5 min read</small></p> -->
+
+              <td>   <img [src]="'data:image/png;base64,'+post.displayPicture" alt="Not found"></td>
+              <!-- <p><img src="{{post.image}}"></p> -->
+               <p class="font-medium">{{ post.date}}<small> 5 min read</small></p> 
+           <p class="font-bold">{{ post.title}}</p>
+              <p>{{ post.body}}</p>
+               <a href="#" [routerLink]="['/records/', post.id]" class="btn btn-info">View more</a>
+        </div>
+        <!-- Card 2 -->
+        <!-- <div>Second Blog
+
+        </div> -->
+        <!-- Card 3 -->
+        <!-- <div>Third Blog
+
+        </div> -->
+        <!-- And so on for other cards -->
+         
+         
+    </div>
+    </div>
+
+   
+    
+    
+    
