@@ -22,7 +22,7 @@
               <td>   <img [src]="'data:image/png;base64,'+post.displayPicture" alt="Not found"></td>
               <!-- <p><img src="{{post.image}}"></p> -->
                <!-- <p class="font-medium">{{ post.date}}<small> 5 min read</small></p>  -->
-                 <p class="font-medium">{{ myDate | date:'mediumDate'}}<small> 5 min read</small></p>
+                 <p class="font-medium">{{ post.date |date:'mediumDate'}}<small> 5 min read</small></p>
            <p class="font-bold">{{ post.title}}</p>
               <p>{{ post.body | truncate:100:true }}</p>
                <a href="#" [routerLink]="['/records/', post.id]" class="text-blue-600">View More</a>

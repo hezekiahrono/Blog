@@ -1,19 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostService } from '../post/post.service';
 import { RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Blog } from '../blog';
 import { HttpClient } from '@angular/common/http';
+import { TruncatePipe } from '../truncate.pipe';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-search-blog',
-  imports: [RouterLink,RouterModule,FormsModule,CommonModule,ReactiveFormsModule],
+  imports: [RouterLink,RouterModule,FormsModule,CommonModule,ReactiveFormsModule,
+    TruncatePipe, MatPaginatorModule
+  ],
   templateUrl: './search-blog.component.html',
   styleUrl: './search-blog.component.css'
 })
 export class SearchBlogComponent {
 
+    totalElements = 0;
+          pageSize = 3;
+          pageNumber = 0;
+          title='id';
+
+           @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+   myDate: Date = new Date();
   recordCount: number | undefined;
   //searchForm!:FormGroup;
   blogs = [];
@@ -28,7 +40,7 @@ export class SearchBlogComponent {
     
   }
   ngOnInit(): void {
-
+ this.getBlogs();
 
     this.http.get<Blog[]>("http://localhost:8080/blog")
         .subscribe(response=>{
@@ -68,6 +80,18 @@ export class SearchBlogComponent {
         });
 
   }
+  getBlogs(): void {
+            this.postService.getEntities(this.pageNumber, this.pageSize, this.title)
+              .subscribe(response => {
+                this.posts = response.content;
+                this.totalElements = response.totalElements;
+              });
+          }
+   onPageChange(event: PageEvent): void {
+            this.pageNumber = event.pageIndex;
+            this.pageSize = event.pageSize;
+            this.getBlogs();
+          }
   // searchBlogs(){
   //  // console.log(this.searchForm.value);
   // }

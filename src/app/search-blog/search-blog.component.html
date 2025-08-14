@@ -32,9 +32,10 @@
   
             <td>   <img [src]="'data:image/png;base64,'+result.displayPicture" alt="Not found"></td>
               <!-- <p><img src="{{post.image}}"></p> -->
-               <p class="font-medium">{{ result.date}}<small> 5 min read</small></p> 
+               <!-- <p class="font-medium">{{ result.date}}<small> 5 min read</small></p>  -->
+                 <p class="font-medium">{{ result.date |date:'mediumDate'}}<small> 5 min read</small></p>
            <p class="font-bold">{{ result.title}}</p>
-              <p>{{ result.body}}</p>
+              <p>{{ result.body |truncate:100:true}}</p>
                <!-- <a href="#" [routerLink]="['/records/', post.id]" class="btn btn-info">View more</a> -->
         </div>
         </div>
@@ -50,9 +51,9 @@
          <div class="grid grid-cols-3 gap-20" >
       <td>   <img [src]="'data:image/png;base64,'+post.displayPicture" alt="Not found"></td>
               <!-- <p><img src="{{post.image}}"></p> -->
-               <p class="font-medium">{{ post.date}}<small> 5 min read</small></p> 
+               <p class="font-medium">{{ post.date | date:'mediumDate'}}<small> 5 min read</small></p> 
            <p class="font-bold">{{ post.title}}</p>
-              <p>{{ post.body}}</p>
+              <p>{{ post.body|truncate:100:true}}</p>
               </div>
               
     </div>
@@ -67,15 +68,25 @@
        
       <td>   <img [src]="'data:image/png;base64,'+post.displayPicture" alt="Not found"></td>
               <!-- <p><img src="{{post.image}}"></p> -->
-               <p class="font-medium">{{ post.date}}<small> 5 min read</small></p> 
+               <p class="font-medium">{{ post.date | date:'mediumDate'}}<small> 5 min read</small></p> 
            <p class="font-bold">{{ post.title}}</p>
-              <p>{{ post.body}}</p>
+              <p>{{ post.body|truncate:100:true}}</p>
                <a href="#" [routerLink]="['/records/', post.id]" class="text-blue-600">View</a>
              
               
     </div>
     </div>
     </div>
+
+     <div class="flex justify-center">
+    <mat-paginator
+          [length]="totalElements"
+          [pageSize]="pageSize"
+          [pageIndex]="pageNumber"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          (page)="onPageChange($event)">
+        </mat-paginator>
+        </div>
      
   </div>
   
