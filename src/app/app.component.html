@@ -1,6 +1,29 @@
    
    <app-header></app-header>
+
+   <div *ngIf="searchResults.length > 0">
+          <h2 class="flex justify-center mb-4 font-bold">Searched Results....</h2>
+         <div class="grid grid-cols-3 gap-20" >
+    
+     
+       
+        <div *ngFor="let result of searchResults">
+<!-- {{ result.title }} -->
+  
+            <td>   <img [src]="'data:image/png;base64,'+result.displayPicture" alt="Not found"></td>
+              <!-- <p><img src="{{post.image}}"></p> -->
+               <p class="font-medium">{{ result.date}}<small> 5 min read</small></p> 
+           <p class="font-bold">{{ result.title}}</p>
+              <p>{{ result.body}}</p>
+               <!-- <a href="#" [routerLink]="['/records/', post.id]" class="btn btn-info">View more</a> -->
+        </div>
+        </div>
+        <!-- Adjust 'result.name' to match your API response structure -->
+     
+    </div>
     <router-outlet/>
+
+
 
 <app-footer></app-footer>
 

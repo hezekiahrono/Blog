@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { Post } from '../post/post';
 import { PostService } from '../post/post.service';
@@ -9,14 +9,16 @@ import { BlogPosts } from '../blog-posts';
 import { Blog } from '../blog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { TruncatePipe } from '../truncate.pipe';
 
 
 
 @Component({
   selector: 'app-home',
+  
   imports: [FooterComponent, CommonModule, RouterModule,
     RouterLink,RouterModule,FormsModule,CommonModule,ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,TruncatePipe
    
   ],
   templateUrl: './home.component.html',
@@ -25,6 +27,7 @@ import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/p
 
 export class HomeComponent implements OnInit{
 
+  
    //products: any[] = [];
           totalElements = 0;
           pageSize = 3;
