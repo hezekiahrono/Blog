@@ -3,11 +3,14 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { RouterLink, RouterModule } from '@angular/router';
 import { PostService } from '../post/post.service';
 import { CommonModule } from '@angular/common';
+import { TruncatePipe } from '../truncate.pipe';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [ RouterLink,RouterModule,FormsModule,CommonModule,ReactiveFormsModule],
+  imports: [ RouterLink,RouterModule,FormsModule,CommonModule,ReactiveFormsModule,
+    TruncatePipe
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

@@ -6,23 +6,24 @@
     <a href="#" routerLink="/post/index" class="ml-15 font-bold">Back to blog bosts</a>
 </div>
    
-<div class class="max-w-sm mx-auto">
+ <div class="flex justify-center mb-4" >
   
 <div *ngIf="record" class="bg-gray-300">
-   
+    
 
-    <div> <p class="text-4xl w-96">{{ record.title }}</p></div>
+    <div> <p class="flex justify-center text-4xl">{{ record.title }}</p></div>
 
-      <div class="ml-30 mr-30"> <p>{{ record.date }}</p> </div>
+      <div class="flex justify-center ml-30 mr-30"> <p>{{ record.date |date:'mediumDate'}}</p> </div>
 
- <img [src]="'data:image/png;base64,'+record.displayPicture"  alt="Not found">
+ <img class="flex justify-center" [src]="'data:image/png;base64,'+record.displayPicture"  alt="Not found">
 
- <div>
- <p class="w-full">{{ record.body }}</p>
+
+ <p class="w-282">{{ record.body }}</p>
+
 </div>
  </div>
    
 
-</div>
+
 </div>
 

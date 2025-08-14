@@ -25,21 +25,24 @@
   </div>
 </nav>
 
+ <div class="flex justify-center mb-4" >
 <div *ngIf="searchResults.length > 0">
           <h2 class="flex justify-center mb-4 font-bold">Searched Results....</h2>
          <div class="flex justify-center mb-4" >
     
      
-       
-        <div *ngFor="let result of searchResults">
+      
+        <div *ngFor="let result of searchResults" class="bg-gray-300">
 <!-- {{ result.title }} -->
-  
+     <p class="flex justify-center text-4xl">{{ result.title}}</p>
+     <p class="font-medium flex justify-center">{{ result.date |date:'mediumDate'}} 5 min read</p> 
             <td>   <img [src]="'data:image/png;base64,'+result.displayPicture" alt="Not found"></td>
               <!-- <p><img src="{{post.image}}"></p> -->
-               <p class="font-medium">{{ result.date}}<small> 5 min read</small></p> 
-           <p class="font-bold">{{ result.title}}</p>
-              <p>{{ result.body}}</p>
-               <a href="#" [routerLink]="['/records/', result.id]"  class="text-blue-600">View more</a>
+            
+        
+              <p class="w-250">{{ result.body|truncate:100:true}}</p>
+               <a href="#" [routerLink]="['/records/', result.id]"  class="text-blue-600">Read more</a>
+        </div>
         </div>
         </div>
         <!-- Adjust 'result.name' to match your API response structure -->
