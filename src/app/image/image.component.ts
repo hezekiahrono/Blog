@@ -19,10 +19,11 @@ export class ImageComponent {
 
    title: string='';
  body:string='';
-  date:string='';
+date:string='';
   slug:string='';
  file: string = '';
-  
+ 
+
   
 
   constructor(private http: HttpClient,

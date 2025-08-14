@@ -11,4 +11,5 @@ export interface Blog {
     date: string;
 
     displayPicture: string;
+    
 }
