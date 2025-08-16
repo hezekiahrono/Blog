@@ -1,7 +1,7 @@
 <div class="pt-10">
     <a href="#" routerLink="/app-home" class="ml-15 font-bold">Back to blog bosts</a>
 </div>
-<form class="max-w-sm mx-auto" (ngSubmit)="onSubmit()">
+<form class="max-w-sm mx-auto" (ngSubmit)="onSubmit()" >
 
         <h1 class="text-4xl mb-2">Create Blog Post</h1>
         <h2 class="mb-2">Enter your blog details click save when you are done</h2>
@@ -21,10 +21,13 @@
                 name="title"
 
                 type="text" 
+                #titleModel="ngModel"
                 
-
-               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
+                required
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+<div *ngIf="titleModel.invalid && (titleModel.dirty || titleModel.touched)" class="text-red-500">
+            title is required.
+        </div>
             
 
         </div>
@@ -42,10 +45,15 @@
                 id="date" 
                 name="date"
                 type="date" 
+                 #dateModel="ngModel"
+                
+                required
 
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-           
+           <div *ngIf="dateModel.invalid && (dateModel.dirty || dateModel.touched)" class="text-red-500">
+            date is required.
+        </div>
 
         </div>
 
@@ -63,9 +71,14 @@
                 id="slug" 
 
                 type="text" 
+                  #slugModel="ngModel"
+                
+                required
 
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
+ <div *ngIf="slugModel.invalid && (slugModel.dirty || slugModel.touched)" class="text-red-500">
+            slug is required.
+        </div>
           
 
         </div>
@@ -99,8 +112,14 @@
             [(ngModel)]="file"
             name="file"
             type="file"
+              #fileModel="ngModel"
+                
+                required
          />
     </label>
+     <div *ngIf="fileModel.invalid && (fileModel.dirty || fileModel.touched)" class="text-red-500">
+            image is required.
+        </div>
             
 
     </div>
@@ -122,11 +141,18 @@
                 name="body"
 
                 type="text" 
+                  #bodyModel="ngModel"
+                
+                required
 
-                 class="h-30 w-full border border-gray-300 rounded-md p-2">
+                 class="h-50 w-100 border border-gray-300 rounded-md p-2">
                
 
             </textarea>
+
+            <div *ngIf="bodyModel.invalid && (bodyModel.dirty || bodyModel.touched)" class="text-red-500">
+            comment is required.
+        </div>
 
           
 

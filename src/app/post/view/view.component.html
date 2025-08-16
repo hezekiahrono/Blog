@@ -1,11 +1,11 @@
 
 
-  <div class="p-5">
+  <div class="p-5 mt-2">
   
 <div>
     <a href="#" routerLink="/post/index" class="ml-15 font-bold">Back to blog bosts</a>
 </div>
-   
+   <div class="p-20">
  <div class="flex justify-center mb-4" >
   
 <div *ngIf="record" class="bg-gray-300">
@@ -18,9 +18,10 @@
  <img class="flex justify-center" [src]="'data:image/png;base64,'+record.displayPicture"  alt="Not found">
 
 
- <p class="w-282">{{ record.body }}</p>
+ <p class="w-full">{{ record.body }}</p>
 
 </div>
+ </div>
  </div>
    
 

@@ -14,6 +14,12 @@ import { Router } from '@angular/router';
 })
 export class ImageComponent {
 
+   entries = {
+    title: '',
+    body:'',
+    slug:''
+  };
+
   selectedFile: File | null = null;
    form!: FormGroup;
 
@@ -22,7 +28,7 @@ export class ImageComponent {
 date:string='';
   slug:string='';
  file: string = '';
- 
+  
 
   
 
